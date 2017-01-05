@@ -1,0 +1,188 @@
+; -*- mode: CIL; fill-column: 75; indent-tabs-mode: nil; tab-width: 4 -*-
+
+(selinuxuserdefault sys.id
+    (
+        systemlow
+        systemlow
+    )
+)
+
+(class context
+    (
+        contains
+        translate
+    )
+)
+(classorder
+    (unordered
+        context
+    )
+)
+
+(class dbus
+    (
+        acquire_svc
+        send_msg
+    )
+)
+(classorder
+    (unordered
+        dbus
+    )
+)
+
+(class passwd
+    (
+        chfn
+        chsh
+        crontab
+        passwd
+        rootok
+    )
+)
+(classorder
+    (unordered
+        passwd
+    )
+)
+
+(class service
+    (
+        disable
+        enable
+        reload
+        start
+        status
+        stop
+    )
+)
+(classorder
+    (unordered
+        service
+    )
+)
+
+(typealias rpm_script_t)
+(typealiasactual rpm_script_t sys.isid)
+
+(typealias dpkg_script_t)
+(typealiasactual dpkg_script_t sys.isid)
+
+(in sys
+    (allow isid self
+        (context
+            (
+                all
+            )
+        )
+    )
+    (allow isid self
+        (dbus
+            (
+                all
+            )
+        )
+    )
+    (allow isid self
+        (passwd
+            (
+                all
+            )
+        )
+    )
+
+    (allow isid self
+        (service
+            (
+                all
+            )
+        )
+    )
+
+    (allow isid dev.null.isid
+        (service
+            (
+                all
+            )
+        )
+    )
+
+    (allow isid files.generic_config.config_file
+        (service
+            (
+                all
+            )
+        )
+    )
+    (allow isid files.generic_runtime.runtime_file
+        (service
+            (
+                all
+            )
+        )
+    )
+
+    (allow isid lib.generic_libraries.lib_file
+        (service
+            (
+                all
+            )
+        )
+    )
+
+    (call dev.unconfined_subj_type
+        (
+            isid
+        )
+    )
+
+    (call files.unconfined_subj_type
+        (
+            isid
+        )
+    )
+
+    (call fs.unconfined_subj_type
+        (
+            isid
+        )
+    )
+
+    (call net.unconfined_subj_type
+        (
+            isid
+        )
+    )
+
+    (call sec.unconfined_subj_type
+        (
+            isid
+        )
+    )
+
+    (call subj.unconfined_subj_type
+        (
+            isid
+        )
+    )
+
+    (call sys.unconfined_subj_type
+        (
+            isid
+        )
+    )
+
+    (call term.unconfined_subj_type
+        (
+            isid
+        )
+    )
+
+    (optional sys_optional_stor
+        (call stor.unconfined_subj_type
+            (
+                isid
+            )
+        )
+    )
+)

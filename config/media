@@ -1,0 +1,3 @@
+cdrom sys.id:sys.role:stor.removable.stor_file:s0
+floppy sys.id:sys.role:stor.removable.stor_file:s0
+disk sys.id:sys.role:stor.removable.stor_file:s0

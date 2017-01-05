@@ -1,0 +1,16 @@
+/usr/local/etc /etc
+
+/bin /usr/bin
+/usr/local/bin /usr/bin
+
+/lib /usr/lib
+/usr/local/lib /usr/lib
+
+/lib64 /usr/lib
+/usr/lib64 /usr/lib
+/usr/local/lib64 /usr/lib
+
+/sbin /usr/sbin
+/usr/local/sbin /usr/sbin
+
+/usr/local/share /usr/share

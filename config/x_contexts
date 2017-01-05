@@ -1,0 +1,5 @@
+Section "Module"
+SubSection "extmod"
+Option "SELinux mode disabled"
+EndSubSection
+EndSection

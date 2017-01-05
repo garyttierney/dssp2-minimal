@@ -1,0 +1,3 @@
+[submodule "policy/base"]
+    path = policy/base
+    url = https://github.com/DefenSec/dssp2-base
