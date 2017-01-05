@@ -185,7 +185,7 @@
         )
     )
 
-    (call sys.var_log.var_log_obj_type_transition
+    (call sys.var_log.generic_var_log_obj_type_transition
         (
             isid
         )
