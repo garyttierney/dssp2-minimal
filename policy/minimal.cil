@@ -80,6 +80,7 @@
             )
         )
     )
+
     (allow isid self
         (dbus
             (
@@ -87,6 +88,7 @@
             )
         )
     )
+
     (allow isid self
         (passwd
             (
@@ -153,6 +155,12 @@
         )
     )
 
+    (call lib.ld_so_cache.generic_config_obj_type_transition
+        (
+            isid
+        )
+    )
+
     (call net.unconfined_subj_type
         (
             isid
@@ -172,6 +180,12 @@
     )
 
     (call sys.unconfined_subj_type
+        (
+            isid
+        )
+    )
+
+    (call sys.var_log.var_log_obj_type_transition
         (
             isid
         )
