@@ -63,19 +63,19 @@ policy.%: $(BASE_POLICY_SOURCES) $(MINIMAL_POLICY_SOURCES)
 	$(SECILC) --policyvers=$* --o="$@" $^
 
 install-config: $(POLICY_CONFIG_SOURCES)
-	$(MKDIR) -p $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/logins
 	$(MKDIR) -p $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/contexts/files
 	$(MKDIR) -p $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/contexts/users
+	$(MKDIR) -p $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/logins
 	$(INSTALL) -m0644 config/customizable_types $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/contexts/customizable_types
-	$(INSTALL) -m0644 config/securetty_types $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/contexts/securetty_types
 	$(INSTALL) -m0644 config/dbus_contexts $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/contexts/dbus_contexts
 	$(INSTALL) -m0644 config/default_contexts $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/contexts/default_contexts
 	$(INSTALL) -m0644 config/default_type $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/contexts/default_type
 	$(INSTALL) -m0644 config/failsafe_context $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/contexts/failsafe_context
+	$(INSTALL) -m0644 config/file_contexts.subs_dist $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/contexts/files/file_contexts.subs_dist
+	$(INSTALL) -m0644 config/media $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/contexts/files/media
 	$(INSTALL) -m0644 config/openssh_contexts $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/contexts/openssh_contexts
 	$(INSTALL) -m0644 config/removable_context $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/contexts/removable_context
-	$(INSTALL) -m0644 config/media $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/contexts/files/media
-	$(INSTALL) -m0644 config/file_contexts.subs_dist $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/contexts/files/file_contexts.subs_dist
+	$(INSTALL) -m0644 config/securetty_types $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/contexts/securetty_types
 
 install-semodule: install-config $(BASE_POLICY_SOURCES) $(MINIMAL_POLICY_SOURCES)
 	$(MKDIR) -p $(DESTDIR)/$(SHAREDSTATEDIR)/selinux/$(POLICY_NAME)
