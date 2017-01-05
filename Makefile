@@ -42,7 +42,7 @@ BASE_POLICY_SOURCES = policy/base/access_vectors.cil \
     policy/base/rbacsep.cil \
     policy/base/security.cil \
     policy/base/storage.cil \
-	policy/base/subjects.cil \
+    policy/base/subjects.cil \
     policy/base/system.cil \
     policy/base/terminals.cil
 
@@ -51,7 +51,7 @@ MINIMAL_POLICY_SOURCES = policy/minimal.cil
 all: clean policy.$(POLICY_VERSION)
 
 clean:
-	$(RM) policy.$(POLICY_VERSION) file_contexts
+    $(RM) policy.$(POLICY_VERSION) file_contexts
 
 $(POLICY_VERSION): $(BASE_POLICY_SOURCES) $(MINIMAL_POLICY_SOURCES)
     $(SECILC) --policyvers=$(POLICY_VERSION) --o="$@" $^
