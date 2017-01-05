@@ -2,16 +2,18 @@
 
 include build.conf
 
-BINDIR ?= /usr/bin
-DESTDIR ?=
-INSTALL = $(BINDIR)/install
+BINDIR ?= /bin
+DESTDIR ?= /
+INSTALL = $(USRBINDIR)/install
 MKDIR = $(BINDIR)/mkdir
-RM = ${BINDIR}/rm
-SBINDIR ?= /usr/sbin
-SECILC = $(BINDIR)/secilc
-SEMODULE = $(SBINDIR)/semodule
+RM = $(BINDIR)/rm
+SBINDIR ?= /sbin
+SECILC = $(USRBINDIR)/secilc
+SEMODULE = $(USRSBINDIR)/semodule
 SHAREDSTATEDIR ?= /var/lib
 SYSCONFDIR ?= /etc
+USRBINDIR ?= /usr/bin
+USRSBINDIR ?= /usr/sbin
 
 POLICY_CONFIG_SOURCES = config/customizable_types \
 	config/dbus_contexts \
@@ -73,8 +75,8 @@ install-config: $(POLICY_CONFIG_SOURCES)
 	$(INSTALL) -m0644 config/openssh_contexts $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/contexts/openssh_contexts
 	$(INSTALL) -m0644 config/removable_context $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/contexts/removable_context
 	$(INSTALL) -m0644 config/media $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/contexts/files/media
-	$(INSTALL) -m0644 $(FILE_CONTEXTS_SUBS_DIST) $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/contexts/files/file_contexts.subs_dist
+	$(INSTALL) -m0644 config/file_contexts.subs_dist $(DESTDIR)/$(SYSCONFDIR)/selinux/$(POLICY_NAME)/contexts/files/file_contexts.subs_dist
 
 install-semodule: install-config $(BASE_POLICY_SOURCES) $(MINIMAL_POLICY_SOURCES)
 	$(MKDIR) -p $(DESTDIR)/$(SHAREDSTATEDIR)/selinux/$(POLICY_NAME)
-	$(SEMODULE) -p $(DESTDIR) --priority=100 -i $(BASE_POLICY_SOURCES) $(MINIMAL_POLICY_SOURCES) -N -s $(POLICY_NAME)
+	$(SEMODULE) --priority=100 -i $(BASE_POLICY_SOURCES) $(MINIMAL_POLICY_SOURCES) -N -s $(POLICY_NAME) -p $(DESTDIR)
