@@ -4,7 +4,7 @@
 
 Minimal DSSP (Version2) was designed to provide a template to build the widest array of configurations on top of that address custom access control challenges. A delicate balance was struck to provide just enough tooling to allow one to focus on productivity by making as little assumptions as possible about specific use cases.
 
-A comprenhensive set of optional templates, class mappings, class permissions and macros are provided by default to encourage efficient, consistent, and self documenting policy configuration.
+A comprehensive set of optional templates, class mappings, class permissions and macros are provided by default to encourage efficient, consistent, and self documenting policy configuration.
 
 ## Leverages Common Intermediate Language
 
@@ -60,7 +60,7 @@ Debian:
     echo "Hello World! from: `id -Z`" > /usr/local/bin/helloworld
     chmod +x /usr/local/bin/helloworld
     cat > helloworld.cil <<EOF
-    (block hellworld
+    (block helloworld
         (blockinherit system_agent_template)
 
         (typepermissive subj)
