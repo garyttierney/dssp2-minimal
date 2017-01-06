@@ -99,8 +99,7 @@ rm -rf %{buildroot}
 
 %post minimal
 if [ ! -s /etc/selinux/config ]; then
-echo
-"
+echo "
 SELINUX=enforcing
 SELINUXTYPE=dssp2-minimal
 " > /etc/selinux/config
