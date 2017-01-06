@@ -16,7 +16,7 @@ New language features allows authors to focus on creativity and productivity. Cl
 
 ## Requirements
 
-DSSP requires `semodule` or `secilc` version 2.4 or higher.
+DSSP requires `semodule` or `secilc` version 2.4 and higher.
 
 SELinux should be enabled in the Linux kernel, your file systems should support `security extended attributes` and this support should be enabled in the Linux kernel.
 
@@ -75,7 +75,7 @@ Debian:
         )
     )
     EOF
-    semodule -i helloworld.cil.sh
+    semodule -i helloworld.cil
     restorecon /usr/local/bin/helloworld.sh
     helloworld.sh
 
