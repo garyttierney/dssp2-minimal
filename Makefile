@@ -1,3 +1,5 @@
+# -*- Mode: makefile; indent-tabs-mode: t -*-
+
 .PHONY: all check clean policy install-config install-semodule
 
 include build.conf
