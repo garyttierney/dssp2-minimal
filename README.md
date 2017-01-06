@@ -16,7 +16,7 @@ New language features allows authors to focus on creativity and productivity. Cl
 
 ## Requirements
 
-DSSP requires `semodule` or `secilc` version 2.4 higher.
+DSSP requires `semodule` or `secilc` version 2.4 or higher.
 
 SELinux should be enabled in the Linux kernel, your file systems should support `security extended attributes` and this support should be enabled in the Linux kernel.
 
@@ -57,15 +57,15 @@ Debian:
 
 ## Getting started with Hello World!
 
-    echo "Hello World! from: `id -Z`" > /usr/local/bin/helloworld
-    chmod +x /usr/local/bin/helloworld
+    echo "Hello World! from: `id -Z`" > /usr/local/bin/helloworld.sh
+    chmod +x /usr/local/bin/helloworld.sh
     cat > helloworld.cil <<EOF
     (block helloworld
         (blockinherit system_agent_template)
 
         (typepermissive subj)
 
-        (filecon "/usr/bin/helloworld" file cmd_file_context)
+        (filecon "/usr/bin/helloworld\.sh" file cmd_file_context)
     )
     (in sys
         (call helloworld.auto_subj_type_transition
@@ -75,9 +75,9 @@ Debian:
         )
     )
     EOF
-    semodule -i helloworld.cil
-    restorecon /usr/local/bin/helloworld
-    helloworld
+    semodule -i helloworld.cil.sh
+    restorecon /usr/local/bin/helloworld.sh
+    helloworld.sh
 
 
 ## Resources
