@@ -40,6 +40,7 @@ Fedora:
 
 	cp /usr/lib/tmpfiles.d/pam.conf /etc/tmpfiles.d/ && \
 		sed -i 's/\/var\/run/\/run/' /etc/tmpfiles.d/pam.conf
+
 	cp /usr/lib/tmpfiles.d/libselinux.conf /etc/tmpfiles.d/ && \
 		sed -i 's/\/var\/run/\/run/' /etc/tmpfiles.d/libselinux.conf
 
