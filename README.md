@@ -12,7 +12,7 @@ Common Intermediate Language is a language that is native to SELinux and that im
 
 The source policy oriented nature of CIL provides enhanced accessibility and modularity. Text-based configuration makes it easier to resolve dependencies and to profile.
 
-New language features allows authors to focus on creativity and productivity. Clear and simple syntax makes it easy to parse and generate security policy.
+New language features allow authors to focus on creativity and productivity. Clear and simple syntax makes it easy to parse and generate security policy.
 
 ## Requirements
 
