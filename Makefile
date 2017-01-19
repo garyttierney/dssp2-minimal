@@ -56,7 +56,7 @@ MINIMAL_POLICY_SOURCES = policy/minimal.cil
 all: clean policy.$(POLICY_VERSION)
 
 clean:
-	$(RM) policy.$(POLICY_VERSION) file_contexts
+	$(RM) -f policy.$(POLICY_VERSION) file_contexts
 
 $(POLICY_VERSION): $(BASE_POLICY_SOURCES) $(MINIMAL_POLICY_SOURCES)
 	$(SECILC) --policyvers=$(POLICY_VERSION) --o="$@" $^
